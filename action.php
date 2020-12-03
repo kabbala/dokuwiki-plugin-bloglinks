@@ -113,7 +113,8 @@ class action_plugin_bloglinks extends DokuWiki_Action_Plugin {
             $date = $meta['date']['modified'];
             if (!$date) $date = filemtime(wikiFN($ID));
         } else {
-            $date = $meta['date']['created'];
+            $date = $meta['date']['issued'];
+            if (!$date) $date = $meta['date']['created'];
             if (!$date) $date = filectime(wikiFN($ID));
         }
         $perm = auth_quickaclcheck($ID);
